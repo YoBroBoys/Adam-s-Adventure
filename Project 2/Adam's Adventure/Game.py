@@ -23,6 +23,8 @@ backi = pygame.transform.scale(backi,(100,100))
 
 player = pygame.image.load("Assets/player.png")
 player = pygame.transform.scale(player, (100,150))
+coin = pygame.image.load("Assets/coins.png")
+coin = pygame.transform.scale(coin, (100,100))
 
 a = 70
 tile2 = pygame.image.load('Assets/tile 2.png')
@@ -42,8 +44,8 @@ Black = (0,0,0)
 size = 100
 font = pygame.font.SysFont(None,size)
 
-sound1 = pygame.mixer.Sound('Assets/somersaults-edm-ost-track-176960.mp3')
-sound2 = pygame.mixer.Sound('Assets/ngini-ija-18489.mp3')
+sound1 = pygame.mixer.Sound('Assets/Menu.mp3')
+sound2 = pygame.mixer.Sound('Assets/Play screen.mp3')
 sound1.set_volume(0.03)
 sound2.set_volume(0.5)
 
@@ -123,11 +125,17 @@ def game():
             window.blit(tile2, (a*i, 530))
             window.blit(tile5, (a * i, 600))
             i = i+1
+        for i in range(0,3):
+            window.blit(tile2,(200+(a*i),350))
+            window.blit(tile2, (500 + (a * i), 200))
+            window.blit(tile2, (700 + (a * i), 350))
+            i = i+1
         window.blit(backi, (10, 10))
         if mpos[0] > 10 and mpos[0] < 110 and mpos[1] > 10 and mpos[1] < 110:
             sound2.stop()
             game()
         window.blit(player,(plx,ply))
+        window.blit(coin,(500,500))
         if ply > 530 and plx > 0 and plx < x:
             collide = True
         pygame.display.update()
